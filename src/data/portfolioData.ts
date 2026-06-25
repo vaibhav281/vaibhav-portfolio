@@ -17,7 +17,7 @@ export const personalInfo = {
   phone: "+91 9284512504",
   location: "Nashik, Maharashtra, India",
   github: "https://github.com/vaibhav281",
-  linkedin: "#", // TODO: add LinkedIn URL
+  linkedin: "https://www.linkedin.com/in/vaibhav-chavan281/",
   resumeLink: "/Vaibhav_Chavan_Resume.pdf",
   bio: "Frontend Developer with 2+ years of experience building scalable, high-performance web applications using React.js and Next.js. Strong expertise in UI architecture, performance optimization, and REST API integration. Recently expanded into AI-assisted full-stack development — leveraging modern encryption concepts, real-time systems, and AI tools to accelerate development and system design.",
   available: true,

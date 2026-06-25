@@ -5,19 +5,50 @@ import { personalInfo } from '../data/portfolioData';
 export default function Contact() {
   const { ref, isVisible } = useInView<HTMLDivElement>();
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [sent, setSent] = useState(false);
+
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
-    const body    = encodeURIComponent(`Hi Vaibhav,\n\n${form.message}\n\nFrom: ${form.name}\nEmail: ${form.email}`);
-    window.open(`mailto:${personalInfo.email}?subject=${subject}&body=${body}`, '_blank');
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
+    setStatus('sending');
+
+    // Web3Forms API implementation (Free, no backend required)
+    const formData = new FormData();
+    // TODO: The user needs to replace this placeholder key with their own Web3Forms key
+    formData.append("access_key", "25510bf6-8a0b-40c2-b4e4-311f209f8b8d");
+    formData.append("name", form.name);
+    formData.append("email", form.email);
+    formData.append("message", form.message);
+
+    // Web3Forms accepts a subject to format the incoming email
+    formData.append("subject", `New Portfolio Contact from ${form.name}`);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('success');
+        setForm({ name: '', email: '', message: '' }); // reset form
+        setTimeout(() => setStatus('idle'), 5000); // reset status after 5s
+      } else {
+        console.error("Web3Forms Error:", data);
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 5000);
+      }
+    } catch (err) {
+      console.error("Submission failed:", err);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   return (
@@ -140,9 +171,20 @@ export default function Contact() {
                 />
               </div>
 
-              <button type="submit" className="form-btn">
-                {sent ? '✓ Opening Email Client...' : 'Send Message →'}
+              <button type="submit" className="form-btn" disabled={status === 'sending'}>
+                {status === 'sending' ? 'Sending...' : 'Send Message →'}
               </button>
+
+              {status === 'success' && (
+                <div style={{ marginTop: 16, color: 'var(--cyan)', fontSize: '0.9rem', fontWeight: 500 }}>
+                  ✓ Message sent successfully! I'll get back to you soon.
+                </div>
+              )}
+              {status === 'error' && (
+                <div style={{ marginTop: 16, color: '#ef4444', fontSize: '0.9rem', fontWeight: 500 }}>
+                  ✕ Failed to send message. Please try emailing me directly.
+                </div>
+              )}
             </form>
           </div>
         </div>
