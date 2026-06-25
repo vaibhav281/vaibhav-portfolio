@@ -1810,165 +1810,209 @@ h1, h2, h3, h4, h5 {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(3, 3, 9, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  z-index: 1000;
+  background: rgba(2, 2, 10, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  animation: fadeIn 0.3s ease forwards;
+  animation: modalFadeIn 0.25s ease forwards;
 }
 
-@keyframes fadeIn {
+@keyframes modalFadeIn {
   from { opacity: 0; }
-  to { opacity: 1; }
+  to   { opacity: 1; }
 }
 
 .modal-content {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
+  /* Solid dark card — NOT transparent */
+  background: #10101e;
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  border-radius: 20px;
   width: 100%;
-  max-width: 650px;
-  max-height: 90vh;
+  max-width: 660px;
+  max-height: 88vh;
   overflow-y: auto;
   position: relative;
-  padding: 32px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  padding: 36px;
+  box-shadow:
+    0 0 0 1px rgba(124,58,237,0.1),
+    0 30px 60px -15px rgba(0, 0, 0, 0.8),
+    0 0 80px rgba(124, 58, 237, 0.08);
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+/* Custom scrollbar inside modal */
+.modal-content::-webkit-scrollbar { width: 4px; }
+.modal-content::-webkit-scrollbar-track { background: transparent; }
+.modal-content::-webkit-scrollbar-thumb { background: rgba(124,58,237,0.4); border-radius: 4px; }
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
 }
 
+/* ─── Close button ─── */
 .modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: var(--surface-2);
-  border: 1px solid var(--border-2);
-  color: var(--text-2);
-  width: 32px;
-  height: 32px;
+  top: 18px;
+  right: 18px;
+  background: #1c1c2e;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #94a3b8;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: var(--t);
+  transition: all 0.22s ease;
   z-index: 2;
 }
 
 .modal-close:hover {
-  background: var(--surface-3);
-  color: var(--text);
+  background: #28283e;
+  border-color: rgba(124,58,237,0.5);
+  color: #f1f5f9;
   transform: rotate(90deg);
 }
 
+/* ─── Header ─── */
 .modal-header {
   display: flex;
-  gap: 16px;
-  align-items: center;
-  margin-bottom: 24px;
-  padding-right: 32px;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  padding-right: 36px;
 }
 
 .modal-icon {
-  font-size: 2.2rem;
-  background: var(--surface-2);
-  padding: 12px;
-  border-radius: var(--r-md);
-  border: 1px solid var(--border-2);
+  font-size: 2rem;
+  background: #1c1c2e;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(124,58,237,0.25);
+  flex-shrink: 0;
+  line-height: 1;
 }
 
 .modal-title {
   font-family: var(--font-heading);
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 700;
-  color: var(--text);
+  color: #f1f5f9;
   margin-bottom: 6px;
+  line-height: 1.2;
 }
 
 .modal-tagline {
-  color: var(--purple-light);
+  color: #a78bfa;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
 }
 
+/* ─── Body ─── */
 .modal-body {
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .modal-desc {
-  color: var(--text-2);
-  line-height: 1.7;
-  font-size: 0.95rem;
-  margin-bottom: 24px;
+  color: #94a3b8;
+  line-height: 1.75;
+  font-size: 0.93rem;
+  margin-bottom: 28px;
+  padding: 16px;
+  background: #0d0d1a;
+  border-radius: 10px;
+  border-left: 3px solid rgba(124,58,237,0.5);
 }
 
 .modal-section-title {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  color: var(--text);
-  margin-bottom: 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border-2);
+  color: #a78bfa;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(124,58,237,0.15);
 }
 
 .modal-highlights {
   list-style: none;
   padding: 0;
   margin: 0 0 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .modal-highlights li {
   position: relative;
-  padding-left: 20px;
-  color: var(--text-2);
-  font-size: 0.92rem;
+  padding: 10px 14px 10px 36px;
+  color: #cbd5e1;
+  font-size: 0.9rem;
   line-height: 1.6;
-  margin-bottom: 8px;
+  background: #0d0d1a;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
 .modal-highlights li::before {
   content: '→';
   position: absolute;
-  left: 0;
-  color: var(--cyan);
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #22d3ee;
   font-size: 0.85rem;
+  font-weight: 700;
 }
 
+/* ─── Footer ─── */
 .modal-footer {
   display: flex;
+  gap: 12px;
   padding-top: 24px;
-  border-top: 1px solid var(--border-2);
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-/* Make Project Cards obviously clickable */
+/* ─── Clickable Card ─── */
 .clickable-card {
   cursor: pointer;
-  transition: var(--t);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .clickable-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--purple-light);
-  box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.15);
+  transform: translateY(-5px);
+  border-color: rgba(124, 58, 237, 0.55);
+  box-shadow: 0 12px 32px -8px rgba(124, 58, 237, 0.2);
 }
 
 @media (max-width: 640px) {
   .modal-content {
-    padding: 24px;
+    padding: 24px 20px;
+    max-height: 94vh;
   }
   .modal-header {
     flex-direction: column;
-    align-items: flex-start;
     gap: 12px;
+    padding-right: 36px;
   }
+  .modal-title { font-size: 1.3rem; }
 }
