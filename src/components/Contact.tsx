@@ -6,7 +6,8 @@ export default function Contact() {
   const { ref, isVisible } = useInView<HTMLDivElement>();
   const [form, setForm] = useState({ name: '', email: '', message: '' });
 
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error' | 'rate_limited'>('idle');
+  const [botcheck, setBotcheck] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -14,18 +15,41 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // 1. Bot Protection (Honeypot check)
+    // If a bot checks the hidden field, silently reject
+    if (botcheck) {
+      console.warn("Bot detected");
+      return; 
+    }
+
+    // 2. Anti-Spam: Local Rate Limiting (1 message per minute)
+    const lastSubmitTime = localStorage.getItem('portfolio_last_submit');
+    if (lastSubmitTime) {
+      const timeSinceLastSubmit = Date.now() - parseInt(lastSubmitTime, 10);
+      if (timeSinceLastSubmit < 60000) { // 60 seconds
+        setStatus('rate_limited');
+        setTimeout(() => setStatus('idle'), 5000);
+        return;
+      }
+    }
+
     setStatus('sending');
 
     // Web3Forms API implementation (Free, no backend required)
     const formData = new FormData();
-    // TODO: The user needs to replace this placeholder key with their own Web3Forms key
     formData.append("access_key", "25510bf6-8a0b-40c2-b4e4-311f209f8b8d");
-    formData.append("name", form.name);
-    formData.append("email", form.email);
-    formData.append("message", form.message);
-
-    // Web3Forms accepts a subject to format the incoming email
-    formData.append("subject", `New Portfolio Contact from ${form.name}`);
+    
+    // Core Data
+    formData.append("Name", form.name);
+    formData.append("Email", form.email);
+    formData.append("Message", form.message);
+    
+    // UI/UX Email Improvements
+    formData.append("from_name", "Vaibhav Portfolio Alerts"); // Makes the sender look professional
+    formData.append("subject", `New Opportunity from ${form.name} 🚀`); // Eye-catching subject
+    formData.append("replyto", form.email); // Allows you to hit "Reply" directly in Gmail
+    formData.append("Platform", "Vaibhav Portfolio (React/Vercel)"); // Extra info card in the email
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -36,6 +60,9 @@ export default function Contact() {
       const data = await response.json();
 
       if (data.success) {
+        // Save submit time for rate limiting
+        localStorage.setItem('portfolio_last_submit', Date.now().toString());
+        
         setStatus('success');
         setForm({ name: '', email: '', message: '' }); // reset form
         setTimeout(() => setStatus('idle'), 5000); // reset status after 5s
@@ -130,6 +157,17 @@ export default function Contact() {
           {/* Right — Form */}
           <div className={`reveal-right${isVisible ? ' visible' : ''}`} style={{ transitionDelay: '0.2s' }}>
             <form className="contact-form" onSubmit={handleSubmit}>
+              
+              {/* Honeypot field for bot spam protection */}
+              <input 
+                type="checkbox" 
+                name="botcheck" 
+                className="hidden" 
+                style={{ display: 'none' }} 
+                checked={botcheck}
+                onChange={(e) => setBotcheck(e.target.checked)}
+              />
+
               <div className="form-group">
                 <label className="form-label" htmlFor="contact-name">Your Name</label>
                 <input
@@ -183,6 +221,11 @@ export default function Contact() {
               {status === 'error' && (
                 <div style={{ marginTop: 16, color: '#ef4444', fontSize: '0.9rem', fontWeight: 500 }}>
                   ✕ Failed to send message. Please try emailing me directly.
+                </div>
+              )}
+              {status === 'rate_limited' && (
+                <div style={{ marginTop: 16, color: '#f59e0b', fontSize: '0.9rem', fontWeight: 500 }}>
+                  ⏳ Please wait a moment before sending another message.
                 </div>
               )}
             </form>
