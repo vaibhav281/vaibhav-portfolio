@@ -111,21 +111,23 @@ export const experience = [
 export const projects = [
   {
     id: 1,
-    name: "Limitless Chats",
-    tagline: "Secure Real-Time Messaging Platform",
+    name: "MegaConnect Platform",
+    tagline: "Subscription & Platform Management Dashboard",
     description:
-      "A real-time chat application with end-to-end encryption using the Signal Protocol. Designed with a Zero-Knowledge backend — the server cannot access user data.",
-    tech: ["MERN Stack", "Socket.io", "AES-GCM", "Signal Protocol", "IndexedDB"],
+      "A responsive user dashboard and website UI revamp for managing subscription plans and essential platform functionalities.",
+    tech: ["React.js", "Material UI", "JavaScript", "REST APIs"],
     highlights: [
-      "E2E encryption using Signal Protocol (X3DH, Double Ratchet)",
-      "Zero-Knowledge backend — no server access to user data",
-      "IndexedDB caching and Blob-based rendering for performance",
-      "Real-time message lifecycle tracking (sent, delivered, decrypted)",
+      "Responsive user dashboard development",
+      "Subscription plan management features",
+      "Enhanced overall user experience",
+      "Streamlined platform settings management",
     ],
-    github: "#",
-    live: "#",
+    github: null,
+    live: null,
+    privateRepo: true,
+    liveUnavailable: true,
     featured: true,
-    type: "Personal",
+    type: "Professional",
   },
   {
     id: 2,
@@ -147,7 +149,24 @@ export const projects = [
     featured: true,
     type: "Professional",
   },
-
+  {
+    id: 3,
+    name: "Limitless Chats",
+    tagline: "Secure Real-Time Messaging Platform",
+    description:
+      "A real-time chat application with end-to-end encryption using the Signal Protocol. Designed with a Zero-Knowledge backend — the server cannot access user data.",
+    tech: ["MERN Stack", "Socket.io", "AES-GCM", "Signal Protocol", "IndexedDB"],
+    highlights: [
+      "E2E encryption using Signal Protocol (X3DH, Double Ratchet)",
+      "Zero-Knowledge backend — no server access to user data",
+      "IndexedDB caching and Blob-based rendering for performance",
+      "Real-time message lifecycle tracking (sent, delivered, decrypted)",
+    ],
+    github: "#",
+    live: "#",
+    featured: true,
+    type: "Personal",
+  },
   {
     id: 4,
     name: "FitRaptors",
