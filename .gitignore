@@ -28,3 +28,7 @@ dist-ssr
 
 # Local working docs (not for repo)
 PROFILE.md
+
+docs/
+Career/
+MASTER_PROFILE_TEMPLATE.md
