@@ -34,7 +34,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-white/5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 pt-12 border-t border-white/5">
             <div className="space-y-4">
               <Server className="text-[#ff6b35] w-6 h-6" />
               <h3 className="font-bold text-lg">Scalable Infrastructure</h3>

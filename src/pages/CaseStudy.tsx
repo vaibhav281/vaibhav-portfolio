@@ -2,6 +2,9 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Server, Database, LayoutTemplate, Box, ExternalLink } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa6';
 import { projects } from '../data/portfolioData';
+import BharatBiddingStory from '../components/case-studies/BharatBiddingStory';
+import LimitlessChatsStory from '../components/case-studies/LimitlessChatsStory';
+import WikoIndiaStory from '../components/case-studies/WikoIndiaStory';
 
 export default function CaseStudy() {
   const { id } = useParams();
@@ -16,6 +19,20 @@ export default function CaseStudy() {
     );
   }
 
+  // Render bespoke case studies
+  if (project.slug === 'bharat-bidding') {
+    return <BharatBiddingStory />;
+  }
+  
+  if (project.slug === 'limitless-chats') {
+    return <LimitlessChatsStory />;
+  }
+
+  if (project.slug === 'wiko-india') {
+    return <WikoIndiaStory />;
+  }
+
+  // Fallback template for projects lacking bespoke layouts
   return (
     <>
       {/* HERO SECTION */}
