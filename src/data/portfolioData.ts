@@ -100,7 +100,7 @@ export const projects = [
     slug: "megaconnect-platform",
     title: "MegaConnect Platform",
     category: "Professional",
-    status: "Production (Company Disbanded)",
+    status: "Production",
     year: "2024",
     duration: "4 months",
     role: "Frontend Developer",
@@ -137,7 +137,7 @@ export const projects = [
     gallery: [],
     documents: [],
     lessonsLearned: [],
-    currentState: "The company has been disbanded. Production dashboard is no longer accessible. Public website remains for visual reference.",
+    currentState: "Production system. Public access unavailable. Public website remains for visual reference.",
     liveUrl: "https://megaconnect.cloud/",
     github: null,
     featured: true
@@ -147,7 +147,7 @@ export const projects = [
     slug: "bharat-bidding",
     title: "Bharat Bidding",
     category: "Professional",
-    status: "Production (Archived)",
+    status: "Production",
     year: "2024",
     duration: "6 months",
     role: "Primary Frontend Developer",
@@ -197,7 +197,7 @@ export const projects = [
       "Next time, I would introduce Redux Toolkit or Zustand to prevent prop drilling in complex dashboard workflows.",
       "Routing architecture could be simplified to improve code splitting."
     ],
-    currentState: "Production application is no longer active.",
+    currentState: "Production system. Public access unavailable.",
     liveUrl: null,
     github: null,
     featured: true
@@ -351,7 +351,7 @@ export const projects = [
     gallery: [],
     documents: [],
     lessonsLearned: [],
-    currentState: "The backend services are permanently offline. Only the static frontend source code exists.",
+    currentState: "Backend services decommissioned. Only static source code available.",
     liveUrl: null,
     github: null,
     featured: false

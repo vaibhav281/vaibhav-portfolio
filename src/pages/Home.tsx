@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Server, Shield, Layers, ArrowRight } from 'lucide-react';
+import { Server, Shield, Layers, ArrowRight, GitCommit } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa6';
-import { projects, personalInfo } from '../data/portfolioData';
+import { projects, personalInfo, experience } from '../data/portfolioData';
 
 export default function Home() {
   const featuredProjects = projects.filter(p => p.featured);
@@ -150,6 +150,119 @@ export default function Home() {
                   </div>
                 </div>
               </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* =========================================
+          ENGINEERING PRINCIPLES
+      ========================================= */}
+      <section id="principles" className="mb-32 lg:mb-60 px-6 lg:px-0">
+        <h2 className="heading-font text-3xl md:text-4xl lg:text-5xl font-black mb-12 lg:mb-20 text-white">Engineering Principles</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="space-y-4"
+          >
+            <div className="text-[#ff6b35] font-mono text-xs font-bold mb-2">01</div>
+            <h3 className="text-xl font-bold text-white">Think in Systems, Not Screens</h3>
+            <p className="text-zinc-400 leading-relaxed">
+              A "login page" is not just a form. It is an authentication entry point, a JWT token source, and a session initiator. I map out the upstream and downstream effects of every feature before writing a single line of React.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ delay: 0.1 }}
+            className="space-y-4"
+          >
+            <div className="text-[#ff6b35] font-mono text-xs font-bold mb-2">02</div>
+            <h3 className="text-xl font-bold text-white">Pragmatic Optimization</h3>
+            <p className="text-zinc-400 leading-relaxed">
+              I optimize when there is a clear, measurable performance problem—not prematurely. Clean code serves the product. A working feature with slightly messy code is infinitely more valuable than a perfect codebase with zero shipped features.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ delay: 0.2 }}
+            className="space-y-4"
+          >
+            <div className="text-[#ff6b35] font-mono text-xs font-bold mb-2">03</div>
+            <h3 className="text-xl font-bold text-white">Error Handling is the Feature</h3>
+            <p className="text-zinc-400 leading-relaxed">
+              A feature is not complete until API errors are caught, loading states are deliberate, and edge cases are accounted for. The UI must degrade gracefully, communicating clearly with the user rather than crashing silently.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ delay: 0.3 }}
+            className="space-y-4"
+          >
+            <div className="text-[#ff6b35] font-mono text-xs font-bold mb-2">04</div>
+            <h3 className="text-xl font-bold text-white">Reusability as a Default</h3>
+            <p className="text-zinc-400 leading-relaxed">
+              Whenever a component can be generalized without sacrificing clarity, it becomes part of the design system. This accelerates future development cycles and prevents fragmented UI logic across the application.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* =========================================
+          CAREER TIMELINE
+      ========================================= */}
+      <section id="timeline" className="mb-32 lg:mb-40 px-6 lg:px-0">
+        <h2 className="heading-font text-3xl md:text-4xl lg:text-5xl font-black mb-12 lg:mb-20 text-white">Career Timeline</h2>
+        
+        <div className="relative border-l border-white/10 ml-4 lg:ml-0 space-y-20">
+          {experience.map((job, i) => (
+            <motion.div 
+              key={job.id}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: i * 0.1 }}
+              className="relative pl-10 lg:pl-16"
+            >
+              <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 bg-[#ff6b35] rounded-full shadow-[0_0_10px_rgba(255,107,53,0.5)]"></div>
+              
+              <div className="flex flex-col lg:flex-row lg:items-end gap-2 lg:gap-6 mb-4">
+                <h3 className="text-2xl font-bold text-white">{job.role}</h3>
+                <span className="text-[#ff6b35] font-mono text-sm uppercase tracking-widest">{job.company}</span>
+              </div>
+              
+              <div className="flex flex-wrap gap-4 text-xs font-mono text-zinc-500 mb-6 uppercase tracking-wider">
+                <span className="flex items-center gap-2"><GitCommit className="w-3 h-3" /> {job.period}</span>
+                <span className="flex items-center gap-2"><GitCommit className="w-3 h-3" /> {job.duration}</span>
+                <span className="flex items-center gap-2"><GitCommit className="w-3 h-3" /> {job.location}</span>
+              </div>
+
+              <ul className="space-y-4 mb-6">
+                {job.points.map((point, idx) => (
+                  <li key={idx} className="text-zinc-400 leading-relaxed text-sm lg:text-base flex items-start gap-4">
+                    <span className="text-zinc-600 mt-1">-</span> {point}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex flex-wrap gap-2">
+                {job.tech.map((t) => (
+                  <span key={t} className="px-3 py-1 bg-white/5 text-zinc-300 text-xs font-mono rounded-sm">
+                    {t}
+                  </span>
+                ))}
+              </div>
             </motion.div>
           ))}
         </div>
