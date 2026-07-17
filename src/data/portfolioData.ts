@@ -260,7 +260,7 @@ export const projects = [
     ],
     currentState: "Active development. Current UI is a temporary placeholder. Deployment pending architectural finalization.",
     liveUrl: null,
-    github: "https://github.com/vaibhav281",
+    github: "https://github.com/vaibhav281/limitless-chats",
     featured: true
   },
   {
@@ -400,7 +400,7 @@ export const projects = [
     lessonsLearned: [],
     currentState: "Live prototype playable in browser.",
     liveUrl: "https://brick-breaker-game-eight.vercel.app/",
-    github: "https://github.com/vaibhav281",
+    github: "https://github.com/vaibhav281/brick-breaker-game",
     featured: false
   }
 ];

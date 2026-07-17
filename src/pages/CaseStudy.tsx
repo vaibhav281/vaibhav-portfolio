@@ -1,8 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Server, Shield, Database, LayoutTemplate, Box, ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Server, Database, LayoutTemplate, Box, ExternalLink } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa6';
 import { projects } from '../data/portfolioData';
-import { motion } from 'framer-motion';
 
 export default function CaseStudy() {
   const { id } = useParams();
