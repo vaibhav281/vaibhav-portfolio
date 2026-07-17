@@ -1,7 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowLeft, ArrowRight, MapPin, Camera, Server, Smartphone, FileText, CheckCircle, UploadCloud, Link as LinkIcon, Database, HardDrive, Shield } from 'lucide-react';
-import { SiReact, SiRedux } from 'react-icons/si';
+import { ArrowRight, Server, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // ─── Sub-components ─────────────────────────────────────────────────────────
@@ -48,10 +47,10 @@ function WorkflowStep({
       initial={{ opacity: 0, y: 15 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.4, delay }}
-      className="flex flex-col items-center w-full lg:w-auto"
+      className="flex flex-col items-center w-full xl:w-auto"
     >
       <div className={`
-        px-4 py-3 border text-xs font-mono font-bold text-center min-w-[150px] w-full lg:w-auto
+        px-4 py-3 border text-xs font-mono font-bold text-center min-w-[150px] w-full xl:w-auto
         ${highlight ? 'border-[#10b981]/40 bg-[#10b981]/10 text-[#10b981]' : 'border-white/10 bg-[#0a0a0a] text-zinc-400'}
       `}>
         <div className="text-[9px] text-zinc-600 uppercase tracking-widest mb-1">{step}</div>
@@ -103,7 +102,7 @@ export default function WikoIndiaStory() {
               </div>
             </motion.div>
             
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="lg:col-span-4 flex flex-col justify-end space-y-8">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="lg:col-span-4 flex flex-col justify-center lg:justify-end space-y-8">
               <div>
                 <h3 className="text-white font-bold mb-2">Role</h3>
                 <p className="text-sm text-zinc-400">Primary Frontend Engineer</p>
@@ -213,7 +212,7 @@ export default function WikoIndiaStory() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-12">The Verifiable Pipeline</h2>
           
           <div className="p-6 md:p-12 border border-white/5 bg-[#080808]" ref={lifecycleRef}>
-            <div className="flex flex-col lg:flex-row flex-wrap items-center gap-0 justify-center">
+            <div className="flex flex-col xl:flex-row items-center gap-0 justify-center w-full">
               {[
                 { step: '01', label: 'Admin Configuration', sub: 'Master Data / Orders', highlight: false, delay: 0 },
                 { step: '02', label: 'Inspector Auth', sub: 'OTP JWT Login', highlight: false, delay: 0.1 },
@@ -223,15 +222,15 @@ export default function WikoIndiaStory() {
                 { step: '06', label: 'Multipart Payload', sub: 'Images + Data Blob', highlight: true, delay: 0.5 },
                 { step: '07', label: 'Admin Review', sub: 'Final Approval', highlight: false, delay: 0.6 },
               ].map((s, i, arr) => (
-                <div key={i} className="flex flex-col lg:flex-row items-center w-full lg:w-auto">
-                  <div className="w-full lg:w-auto"><WorkflowStep {...s} /></div>
+                <div key={i} className="flex flex-col xl:flex-row items-center w-full xl:w-auto">
+                  <div className="w-full xl:w-auto"><WorkflowStep {...s} /></div>
                   {i < arr.length - 1 && (
                     <>
                       <motion.div initial={{ opacity: 0 }} animate={lifecycleInView ? { opacity: 1 } : {}} transition={{ delay: s.delay + 0.2 }}
-                        className="hidden lg:block w-6 h-[1px] bg-gradient-to-r from-[#10b981]/40 to-[#10b981]/10 shrink-0"
+                        className="hidden xl:block w-6 h-[1px] bg-gradient-to-r from-[#10b981]/40 to-[#10b981]/10 shrink-0"
                       />
                       <motion.div initial={{ opacity: 0 }} animate={lifecycleInView ? { opacity: 1 } : {}} transition={{ delay: s.delay + 0.2 }}
-                        className="lg:hidden w-[1px] h-6 bg-gradient-to-b from-[#10b981]/40 to-[#10b981]/10 shrink-0"
+                        className="xl:hidden w-[1px] h-6 bg-gradient-to-b from-[#10b981]/40 to-[#10b981]/10 shrink-0"
                       />
                     </>
                   )}
