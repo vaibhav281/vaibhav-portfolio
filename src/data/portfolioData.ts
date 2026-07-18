@@ -133,7 +133,7 @@ export const projects = [
     performanceOptimizations: [],
     security: ["JWT based session management"],
     deployment: {},
-    screenshots: ["/src/assets/megaconnect_arch.png"],
+    screenshots: ["/assets/megaconnect_arch.png"],
     gallery: [],
     documents: [],
     lessonsLearned: [],
@@ -190,7 +190,7 @@ export const projects = [
       "Automatic token refresh rotation via interceptors."
     ],
     deployment: {},
-    screenshots: ["/src/assets/Bharatbidding_webpage.png"],
+    screenshots: ["/assets/Bharatbidding_webpage.png"],
     gallery: [],
     documents: [],
     lessonsLearned: [
@@ -252,7 +252,7 @@ export const projects = [
       "Curve25519 Identity Keys."
     ],
     deployment: {},
-    screenshots: ["/src/assets/limitless_chats_arch.png"],
+    screenshots: ["/assets/limitless_chats_arch.png"],
     gallery: [],
     documents: [],
     lessonsLearned: [
@@ -301,7 +301,7 @@ export const projects = [
     performanceOptimizations: [],
     security: ["Location verification enforcement"],
     deployment: {},
-    screenshots: ["/src/assets/wiko_india_arch.png"],
+    screenshots: ["/assets/wiko_india_arch.png"],
     gallery: [],
     documents: [],
     lessonsLearned: [],
@@ -347,7 +347,7 @@ export const projects = [
     performanceOptimizations: [],
     security: [],
     deployment: {},
-    screenshots: ["/src/assets/fitraptors_arch.png"],
+    screenshots: ["/assets/fitraptors_arch.png"],
     gallery: [],
     documents: [],
     lessonsLearned: [],
@@ -394,7 +394,7 @@ export const projects = [
     ],
     security: [],
     deployment: {},
-    screenshots: ["/src/assets/brick_breaker_arch.png"],
+    screenshots: ["/assets/brick_breaker_arch.png"],
     gallery: [],
     documents: [],
     lessonsLearned: [],

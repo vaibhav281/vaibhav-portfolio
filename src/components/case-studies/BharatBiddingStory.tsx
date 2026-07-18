@@ -72,7 +72,7 @@ export default function BharatBiddingStory() {
                   <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">2024</span>
                 </div>
               </div>
-              <img src="/src/assets/Bharatbidding_webpage.png" alt="Bharat Bidding Homepage" className="w-full object-cover border-b border-white/5" />
+              <img src="/assets/Bharatbidding_webpage.png" alt="Bharat Bidding Homepage" className="w-full object-cover border-b border-white/5" />
               <div className="h-10 bg-[#09090b] flex items-center justify-center px-4 gap-4 sm:p-6 border-t border-white/5 text-[9px] font-mono text-zinc-600 uppercase tracking-widest">
                 <span>Desktop</span>
                 <span>Responsive</span>
@@ -136,7 +136,7 @@ export default function BharatBiddingStory() {
             viewport={{ once: true }}
             className="w-full bg-white rounded-sm overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(255,107,53,0.05)] p-4 lg:p-5 sm:p-8 flex justify-center"
           >
-            <img src="/src/assets/how_it_works_img.svg" alt="Bharat Bidding Workflow Diagram" className="max-w-full h-auto" />
+            <img src="/assets/how_it_works_img.svg" alt="Bharat Bidding Workflow Diagram" className="max-w-full h-auto" />
           </motion.div>
         </div>
       </section>

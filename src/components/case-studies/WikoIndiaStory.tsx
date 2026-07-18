@@ -95,7 +95,7 @@ export default function WikoIndiaStory() {
               <div className="aspect-video bg-[#0a0a0a] border border-white/5 relative overflow-hidden flex items-center justify-center group">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
                 <img 
-                  src="/src/assets/wiko_india_arch.png" 
+                  src="/assets/wiko_india_arch.png" 
                   alt="Wiko India Architecture" 
                   className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700 grayscale group-hover:grayscale-0"
                 />
