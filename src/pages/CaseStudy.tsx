@@ -5,6 +5,7 @@ import { projects } from '../data/portfolioData';
 import BharatBiddingStory from '../components/case-studies/BharatBiddingStory';
 import LimitlessChatsStory from '../components/case-studies/LimitlessChatsStory';
 import WikoIndiaStory from '../components/case-studies/WikoIndiaStory';
+import SmoothImage from '../components/ui/SmoothImage';
 
 export default function CaseStudy() {
   const { id } = useParams();
@@ -74,9 +75,13 @@ export default function CaseStudy() {
 
         {/* SCREENSHOT / VISUAL PREVIEW */}
         {project.screenshots && project.screenshots.length > 0 ? (
-          <div className="w-full aspect-[21/9] bg-zinc-900 rounded-sm overflow-hidden border border-white/5 relative">
-            <img src={project.screenshots[0]} alt={`${project.title} preview`} className="object-cover w-full h-full opacity-80" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-transparent"></div>
+          <div className="w-full aspect-[21/9] rounded-sm overflow-hidden border border-white/5 relative">
+            <SmoothImage 
+              src={project.screenshots[0]} 
+              alt={`${project.title} preview`} 
+              className="object-cover w-full h-full opacity-80" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-transparent pointer-events-none"></div>
           </div>
         ) : (
           <div className="w-full aspect-[21/9] bg-[#0c0c0e] rounded-sm border border-white/5 flex items-center justify-center relative overflow-hidden">
